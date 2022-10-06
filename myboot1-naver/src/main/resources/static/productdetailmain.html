@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>of-hub-product-detail</title>
+</head>
+<script src="js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	
+});
+
+</script>
+<script>
+//document.write(1);
+
+var bigPic ;
+
+window.onload = function(){
+	console.log(1);
+	 var bigPic = document.querySelector("#big");//1개리턴
+	var smallPics = document.querySelectorAll(".small");//3개이미지배열리턴
+	
+	//document.write(2);
+	console.log(2);
+	
+	
+	for(var i = 0; i < smallPics.length; i++){
+		//console.log(smallPics[i].getAttribute("src"));
+		smallPics[i].addEventListener("click", changepic);
+	}
+}
+
+function changepic(){
+	//console.log(this.getAttribute("src"));
+	var smallPicAttribute = this.getAttribute("src");
+	bigPic.setAttribute("src", smallPicAttribute);
+	
+}
+</script>
+
+<body>
+	
+	<!-- main container -->
+	${productdetail.p_name }
+	
+	<div id="images">
+		<div id="bigImages">
+			<img id="big" src='images/1.png'>
+		</div>
+		<div id="smallImages">
+			<img class="small" src='images/2.jpg'>
+			<img class="small" src='images/3.jpg'>
+			<img class="small" src='images/1.png'>
+		</div>
+	</div>
+
+	<div class="information">
+		<div> 브랜드 ${productdetail.p_brand } </div>
+		<c:set var="p_sex" value="${productdetail.p_sex }" />
+
+
+</body>
+
+</html>
