@@ -24,14 +24,14 @@ public class JasyptConfig {
     public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        //config.setPassword("1234"); 
+       config.setPassword("1234"); 
         // 암호화 키. #jasypt.encryptor.password=1234
         
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
         //실행시 arguments 입력값으로 대신할 땐 이렇게
         
 		//WINDOWS / linux 환경변수에 JASYPT_ENCRYPTOR_PASSWORD=1234 설정후 RUN
-        config.setPassword(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
+        //config.setPassword(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
 		
         config.setAlgorithm("PBEWithMD5AndDES"); // 알고리즘
         config.setKeyObtentionIterations("1000");
