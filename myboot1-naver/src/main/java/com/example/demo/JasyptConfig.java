@@ -30,6 +30,9 @@ public class JasyptConfig {
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
         //실행시 arguments 입력값으로 대신할 땐 이렇게
         
+		//WINDOWS 환경변수에 jasypt.encryptor.password=1234 설정후 RUN
+        //config.setPassword(System.getenv("jasypt.encryptor.password"));
+		
         config.setAlgorithm("PBEWithMD5AndDES"); // 알고리즘
         config.setKeyObtentionIterations("1000");
         config.setPoolSize("1");
