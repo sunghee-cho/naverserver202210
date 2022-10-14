@@ -10,7 +10,8 @@ public class MyWebConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/upload/**").addResourceLocations
-		("file:///c:/upload/");
+			("file:/root/upload/"); //mkdir /root/upload
+		//("file:///c:/upload/");
 	}
 	
 

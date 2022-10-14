@@ -5,12 +5,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+<<<<<<< HEAD
 //for ssl
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.apache.catalina.connector.Connector;
+=======
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.apache.catalina.connector.Connector;
+
+>>>>>>> branch 'main' of https://github.com/sunghee-cho/naverserver202210.git
 /*  xml
  * <context:component-scan base-package=a.b.test">
  * @ComponentScan(basepackage="a.b.test")
@@ -28,13 +37,30 @@ import org.apache.catalina.connector.Connector;
 @MapperScan(basePackages ="board.spring.mybatis" )
 @MapperScan(basePackages = "upload")
 
+<<<<<<< HEAD
 //for ssl
+=======
+>>>>>>> branch 'main' of https://github.com/sunghee-cho/naverserver202210.git
 @RestController
 public class Myboot1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Myboot1Application.class, args);
 	}
+	
+	@Bean    
+	public ServletWebServerFactory serveltContainer(){       
+		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();        
+		tomcat.addAdditionalTomcatConnectors(createStandardConnector());       
+		return tomcat;    
+	}    
+	
+	private Connector createStandardConnector(){        
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");        
+		connector.setPort(8080);        
+		return connector;    
+	}
+
 
 	@Bean    
 	public ServletWebServerFactory serveltContainer(){       
