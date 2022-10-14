@@ -5,6 +5,7 @@ import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -20,8 +21,12 @@ public class JasyptConfig {
 	@Autowired
 	Environment environment;
 	
+	@Value("${myvar}")
+	String myvar;
+	
     @Bean("jasyptEncryptor")
     public StringEncryptor stringEncryptor() {
+    	System.out.println(myvar);
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
        //config.setPassword("1234"); 
@@ -31,7 +36,8 @@ public class JasyptConfig {
         //실행시 arguments 입력값으로 대신할 땐 이렇게
         
 		//WINDOWS / linux 환경변수에 JASYPT_ENCRYPTOR_PASSWORD=1234 설정후 RUN
-        config.setPassword(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
+        //window테스트ok, linux테스트error
+        config.setPassword(myvar);
 		
         config.setAlgorithm("PBEWithMD5AndDES"); // 알고리즘
         config.setKeyObtentionIterations("1000");
