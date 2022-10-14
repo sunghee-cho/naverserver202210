@@ -24,8 +24,8 @@ public class JasyptConfig {
     public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        //config.setPassword("1234"); 
-        // 암호화 키. 현재 application.properties파일에 정의된 것으로 대신함
+        config.setPassword("1234"); 
+        // 암호화 키. 
         
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
         //실행시 arguments 입력값으로 대신할 땐 이렇게
