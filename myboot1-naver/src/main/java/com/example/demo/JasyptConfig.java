@@ -26,9 +26,10 @@ public class JasyptConfig {
 	
     @Bean("jasyptEncryptor")
     public StringEncryptor stringEncryptor() {
+    	//JASYPT_ENCRYPTOR_PASSWORD="1234"
     	System.out.println(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
     	System.out.println(System.getenv("JAVA_HOME"));
-    	System.out.println(myvar);
+    	System.out.println("전체환경변수값 : "+System.getenv());
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
        //config.setPassword("1234"); 
