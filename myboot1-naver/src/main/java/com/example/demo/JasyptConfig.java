@@ -27,14 +27,13 @@ public class JasyptConfig {
     @Bean("jasyptEncryptor")
     public StringEncryptor stringEncryptor() {
     	//System.out.println(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
-    	//System.out.println(System.getenv("USER"));
+    	System.out.println(System.getenv("USER"));
     	//System.out.println("전체환경변수값 : "+System.getenv());
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-       config.setPassword(System.getenv("USER")); 
+        config.setPassword(System.getenv("USER")); 
         
         // 암호화 키. #jasypt.encryptor.password=root
-        
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
         //실행시 arguments 입력값으로 대신할 땐 이렇게
         
