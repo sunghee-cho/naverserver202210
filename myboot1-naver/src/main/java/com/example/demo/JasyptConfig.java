@@ -31,7 +31,7 @@ public class JasyptConfig {
     	//System.out.println("전체환경변수값 : "+System.getenv());
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        config.setPassword(System.getenv("USER")); 
+        config.setPassword(System.getenv("DB_PASSWORD")); 
         
         // 암호화 키. #jasypt.encryptor.password=root
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
