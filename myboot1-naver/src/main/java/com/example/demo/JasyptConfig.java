@@ -21,26 +21,26 @@ public class JasyptConfig {
 	@Autowired
 	Environment environment;
 	
-	@Value("${myvar}")
-	String myvar;
+	/*@Value("${myvar}")
+	String myvar;*/
 	
     @Bean("jasyptEncryptor")
     public StringEncryptor stringEncryptor() {
-    	//JASYPT_ENCRYPTOR_PASSWORD="1234"
-    	System.out.println(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
-    	System.out.println(System.getenv("JAVA_HOME"));
-    	System.out.println("전체환경변수값 : "+System.getenv());
+    	//System.out.println(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
+    	//System.out.println(System.getenv("USER"));
+    	//System.out.println("전체환경변수값 : "+System.getenv());
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-       //config.setPassword("1234"); 
-        // 암호화 키. #jasypt.encryptor.password=1234
+       config.setPassword(System.getenv("USER")); 
+        
+        // 암호화 키. #jasypt.encryptor.password=root
         
         //config.setPassword(environment.getProperty("jasypt.encryptor.password"));
         //실행시 arguments 입력값으로 대신할 땐 이렇게
         
 		//WINDOWS / linux 환경변수에 JASYPT_ENCRYPTOR_PASSWORD=1234 설정후 RUN
         //window테스트ok, linux테스트error
-        config.setPassword(myvar);
+        //config.setPassword(myvar);
 		
         config.setAlgorithm("PBEWithMD5AndDES"); // 알고리즘
         config.setKeyObtentionIterations("1000");
@@ -50,20 +50,20 @@ public class JasyptConfig {
         encryptor.setConfig(config);
 		System.out.println("===JasyptConfig실행===");
 		//application.properties db항목 복호화 확인
-		System.out.println(encryptor.decrypt("Y8odRO/yYJgZRck+0FuHl0s0mETiYcqDiMvS2t2NGks6KY/ki44iEA=="));
-		System.out.println(encryptor.decrypt("qS1d7uQ46YJIhLmqJMt7Q3Mmk+WCzGRLF2eYfKcgVaOxB5T0MSb0hEdPmqse4jIh"));
-		System.out.println(encryptor.decrypt("i6bAP12YaeQvN3jID65+fTFLFY2fvCN/"));
-		System.out.println(encryptor.decrypt("t74ep0wdHzoiyXikV4/HEiXF+khfCVBL"));
+		System.out.println(encryptor.decrypt("y7fPL5j7VBOYGHPuTeNJStPXIvpjETXUSq+0zbBengrkavxf15bFPA=="));
+		System.out.println(encryptor.decrypt("FznE7zLQQJfJ/pR4OoqL7yAOkY2pApJMv+AlkxS9gIwCFPgPHRHpFmqPm9GEd5e7"));
+		System.out.println(encryptor.decrypt("JBz7sw/U0ZItkhFe+6LjF6GJBWvIa0Ch"));
+		System.out.println(encryptor.decrypt("r8wnjd8ntkKnbsKRVVtQ2jrVNbq65NqY"));
 		
         return encryptor;
     }
  
 }
 /*
-spring.datasource.driver-class-name=ENC(Y8odRO/yYJgZRck+0FuHl0s0mETiYcqDiMvS2t2NGks6KY/ki44iEA==)
-spring.datasource.url=ENC(qS1d7uQ46YJIhLmqJMt7Q3Mmk+WCzGRLF2eYfKcgVaOxB5T0MSb0hEdPmqse4jIh)
-spring.datasource.username=ENC(i6bAP12YaeQvN3jID65+fTFLFY2fvCN/)
-spring.datasource.password=ENC(t74ep0wdHzoiyXikV4/HEiXF+khfCVBL)
+spring.datasource.driver-class-name=ENC(y7fPL5j7VBOYGHPuTeNJStPXIvpjETXUSq+0zbBengrkavxf15bFPA==)
+spring.datasource.url=ENC(FznE7zLQQJfJ/pR4OoqL7yAOkY2pApJMv+AlkxS9gIwCFPgPHRHpFmqPm9GEd5e7)
+spring.datasource.username=ENC(JBz7sw/U0ZItkhFe+6LjF6GJBWvIa0Ch)
+spring.datasource.password=ENC(r8wnjd8ntkKnbsKRVVtQ2jrVNbq65NqY)
 */
 
 
