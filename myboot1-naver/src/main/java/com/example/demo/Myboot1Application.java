@@ -36,7 +36,9 @@ import org.apache.catalina.connector.Connector;
 public class Myboot1Application {
 
 	public static void main(String[] args) {
+    	System.out.println("부트 시작-"+System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
 		SpringApplication.run(Myboot1Application.class, args);
+		System.out.println("부트 시작 완료");
 	}
 	
 	@Bean    

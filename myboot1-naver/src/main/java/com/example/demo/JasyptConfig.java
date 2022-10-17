@@ -26,6 +26,7 @@ public class JasyptConfig {
 	
     @Bean("jasyptEncryptor")
     public StringEncryptor stringEncryptor() {
+    	System.out.println(System.getenv("JASYPT_ENCRYPTOR_PASSWORD"));
     	System.out.println(myvar);
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
